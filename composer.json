@@ -1,0 +1,13 @@
+{
+    "name": "regionhalland/region-halland-acf-drift-info",
+    "description": "Komplett plugin för att skapa en sajt med driftstörningar",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roland Hydén",
+            "email": "Roland.Hyden@Regionhalland.se"
+        }
+    ],
+    "require": {}
+}
