@@ -209,6 +209,130 @@
 	// 2 = Telefoni
 	// 3 = Fastighet
 
+    // *************************************************
+    // *** Hämta alla driftstörningar som är:
+    // *** name_1000022 = 1 & 2 (Pågående & Planerad)
+    // *** Sorterad efter 'name_1000018' med senast först
+    // *************************************************
+    function get_region_halland_drift_info_pagaende_startsida() {
+
+        // Preparerar array för att hämta ut driftstörningar
+        $args = array(
+            'numberposts'	=> -1,
+            'post_type'		=> 'driftinfo',
+            'meta_key' => 'name_1000018',
+            'orderby' => 'meta_value meta_value_num',
+            'order'	=> 'DESC',
+            'meta_query' => array(
+                'relation' => 'AND',
+                array(
+                    'key' => 'name_1000022',
+                    'value' => array('1', '2'),
+                    'compare' => 'IN'
+                )
+            )
+        );
+
+        // Hämta valda driftstörningar
+        $pages = get_posts($args);
+
+        // Loopa igenom valda driftstörningar
+        foreach ($pages as $page) {
+
+            // Hämta diverse olika ACF-objekt
+            $field_start_time	= get_field_object('field_1000017', $page->ID);
+            $field_end_time		= get_field_object('field_1000019', $page->ID);
+            $field_status		= get_field_object('field_1000021', $page->ID);
+            $field_omrade		= get_field_object('field_1000024', $page->ID);
+
+            // Spara ner ACF-data i page-arrayen
+            $page->start_time 	= $field_start_time['value'];
+            $page->end_time 	= $field_end_time['value'];
+            $page->status 		= $field_status['value'];
+            $page->omrade 		= $field_omrade['value'];
+
+            // Lägg till sidans url
+            $page->url 			= get_page_link($page->ID);
+
+            // ACF-fältet med uppföljning
+            $page->follow_up 	= get_field('name_1000027', $page->ID);
+
+            // Text + formatering för label
+            $page->status_name  = "Enligt plan";
+            $page->status_class = "inline-flex py-1 p-3 rounded-full bg-orange";
+        }
+
+        // Returnera valda driftstörningar
+        return $pages;
+
+    }
+
+    // *****************************************************
+    // *** Hämta alla driftstörningar som är "Avslutade" ***
+    // *****************************************************
+    function get_region_halland_drift_info_avslutade_startsida() {
+
+        // Tid just nu minys två timmar
+        $dateMinusTwoHours = date("Y-m-d H:i:s", time()-7200);
+
+        // Preparerar array för att hämta ut driftstörningar
+        $args = array(
+            'numberposts'	=> -1,
+            'post_type'		=> 'driftinfo',
+            'meta_key' => 'name_1000018',
+            'orderby' => 'meta_value meta_value_num',
+            'order'	=> 'DESC',
+            'meta_query' => array(
+                'relation'		=> 'AND',
+                array(
+                    'key' => 'name_1000022',
+                    'value' => '3',
+                    'compare' => 'LIKE'
+                )
+            ),
+            'date_query' => array(
+                array(
+                    'column' => 'post_modified',
+                    'after' => $dateMinusTwoHours,
+                    'inclusive' => true,
+                )
+            )
+        );
+
+        // Hämta valda driftstörningar
+        $pages = get_posts($args);
+
+        // Loopa igenom valda driftstörningar
+        foreach ($pages as $page) {
+
+            // Hämta diverse olika ACF-objekt
+            $field_start_time	= get_field_object('field_1000017', $page->ID);
+            $field_end_time		= get_field_object('field_1000019', $page->ID);
+            $field_status		= get_field_object('field_1000021', $page->ID);
+            $field_omrade		= get_field_object('field_1000024', $page->ID);
+
+            // Spara ner ACF-data i page-arrayen
+            $page->start_time 	= $field_start_time['value'];
+            $page->end_time 	= $field_end_time['value'];
+            $page->status 		= $field_status['value'];
+            $page->omrade 		= $field_omrade['value'];
+
+            // Lägg till sidans url
+            $page->url 			= get_page_link($page->ID);
+
+            // ACF-Fältet med uppföljning
+            $page->follow_up 	= get_field('name_1000027', $page->ID);
+
+            // Text + formatering för label
+            $page->status_name  = "Avslutad";
+            $page->status_class = "inline-flex py-1 p-3 rounded-full bg-red text-white";
+        }
+
+        // Returnera valda driftstörningar
+        return $pages;
+
+    }
+
     // *****************************************************
     // *** Hämta alla driftstörningar som är:
     // *** name_1000022 = 1 & 2 (Pågående & Planerad)
@@ -449,168 +573,7 @@
 
     }
 
-    // *************************************************
-	// *** Hämta alla driftstörningar som är "Pågående" ***
-	// *************************************************
-	function get_region_halland_drift_info_pagaende_alla() {
-
-		// Preparerar array för att hämta ut driftstörningar
-		$args = array( 
-			'numberposts'	=> -1,
-			'post_type'		=> 'driftinfo',
-			'meta_query' => array(
-	            'relation'		=> 'AND',
-	            array(
-	            	'key' => 'name_1000022', 
-	                'value' => '1', 
-	                'compare' => 'LIKE'
-	            )
-	        )
-		);
-
-		// Hämta valda driftstörningar
-		$pages = get_posts($args);
-		
-		// Loopa igenom valda driftstörningar
-		foreach ($pages as $page) {
-
-			// Hämta diverse olika ACF-objekt
-			$field_start_time	= get_field_object('field_1000017', $page->ID);
-			$field_end_time		= get_field_object('field_1000019', $page->ID);
-			$field_status		= get_field_object('field_1000021', $page->ID);
-			$field_omrade		= get_field_object('field_1000024', $page->ID);
-
-			// Spara ner ACF-data i page-arrayen
-			$page->start_time 	= $field_start_time['value'];
-			$page->end_time 	= $field_end_time['value'];
-			$page->status 		= $field_status['value'];
-			$page->omrade 		= $field_omrade['value'];
-			
-			// Lägg till sidans url 	
-			$page->url 			= get_page_link($page->ID);
-			
-			$page->follow_up 	= get_field('name_1000027', $page->ID);
-		}
-
-		// Returnera valda driftstörningar
-		return $pages;
-
-	}
-
-	// *****************************************************
-	// *** Hämta alla driftstörningar som är "Planerade" ***
-	// *****************************************************
-	function get_region_halland_drift_info_planerade_alla() {
-
-		$date = date("Y-m-d H:i:s");
-		
-		// Preparerar array för att hämta ut driftstörningar
-		$args = array( 
-			'numberposts'	=> -1,
-			'post_type'		=> 'driftinfo',
-			'meta_query' => array(
-	            'relation'		=> 'AND',
-	            array(
-	            	'key' => 'name_1000022', 
-	                'value' => '2', 
-	                'compare' => 'LIKE'
-	            ),
-			    array(
-			        'key'		=> 'name_1000018',
-			        'compare'	=> '<=',
-			        'value'		=> $date,
-			    )
-	        )
-		);
-
-		// Hämta valda driftstörningar
-		$pages = get_posts($args);
-		
-		// Loopa igenom valda driftstörningar
-		foreach ($pages as $page) {
-
-			// Hämta diverse olika ACF-objekt
-			$field_start_time	= get_field_object('field_1000017', $page->ID);
-			$field_end_time		= get_field_object('field_1000019', $page->ID);
-			$field_status		= get_field_object('field_1000021', $page->ID);
-			$field_omrade		= get_field_object('field_1000024', $page->ID);
-
-			// Spara ner ACF-data i page-arrayen
-			$page->start_time 	= $field_start_time['value'];
-			$page->end_time 	= $field_end_time['value'];
-			$page->status 		= $field_status['value'];
-			$page->omrade 		= $field_omrade['value'];
-			
-			// Lägg till sidans url 	
-			$page->url 			= get_page_link($page->ID);
-			
-			$page->follow_up 	= get_field('name_1000027', $page->ID);
-		}
-
-		// Returnera valda driftstörningar
-		return $pages;
-
-	}
-
-	// *****************************************************
-	// *** Hämta alla driftstörningar som är "Avslutade" ***
-	// *****************************************************
-	function get_region_halland_drift_info_avslutade_alla() {
-
-		// Tid just nu minys två timmar
-		$dateMinusTwoHours = date("Y-m-d H:i:s", time()-7200);
-		
-		// Preparerar array för att hämta ut driftstörningar
-		$args = array( 
-			'numberposts'	=> -1,
-			'post_type'		=> 'driftinfo',
-			'meta_query' => array(
-	            'relation'		=> 'AND',
-	            array(
-	            	'key' => 'name_1000022', 
-	                'value' => '3', 
-	                'compare' => 'LIKE'
-	            )
-	        ),
-	        'date_query' => array(
-			    array(
-			        'column' => 'post_modified',
-			        'after' => $dateMinusTwoHours,
-			        'inclusive' => true,
-			    )
-			)
-		);
-
-		// Hämta valda driftstörningar
-		$pages = get_posts($args);
-		
-		// Loopa igenom valda driftstörningar
-		foreach ($pages as $page) {
-
-			// Hämta diverse olika ACF-objekt
-			$field_start_time	= get_field_object('field_1000017', $page->ID);
-			$field_end_time		= get_field_object('field_1000019', $page->ID);
-			$field_status		= get_field_object('field_1000021', $page->ID);
-			$field_omrade		= get_field_object('field_1000024', $page->ID);
-
-			// Spara ner ACF-data i page-arrayen
-			$page->start_time 	= $field_start_time['value'];
-			$page->end_time 	= $field_end_time['value'];
-			$page->status 		= $field_status['value'];
-			$page->omrade 		= $field_omrade['value'];
-			
-			// Lägg till sidans url 	
-			$page->url 			= get_page_link($page->ID);
-			
-			$page->follow_up 	= get_field('name_1000027', $page->ID);
-		}
-
-		// Returnera valda driftstörningar
-		return $pages;
-
-	}
-
-	// *****************************************************
+    // *****************************************************
 	// *** Hämta driftstörningar för "IT - Kommande"
     // *****************************************************
     // *** Hämta alla driftstörningar som är:
