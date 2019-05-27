@@ -316,21 +316,16 @@
             $field_start_time   = get_field_object('field_1000017', $page->ID);
             $field_end_time     = get_field_object('field_1000019', $page->ID);
             $field_status       = get_field_object('field_1000021', $page->ID);
-            $field_omrade       = get_field_object('field_1000024', $page->ID);
-            $field_omrade_new   = get_field_object('field_1000058', $page->ID);
+            $field_omrade       = get_field_object('field_1000058', $page->ID);
 
             // Spara ner ACF-data i page-arrayen
             $page->start_time   = $field_start_time['value'];
             $page->end_time     = $field_end_time['value'];
             $page->status       = $field_status['value'];
             $page->omrade       = $field_omrade['value'];
-            $page->omrade_new   = $field_omrade_new['value'];
 
             // Lägg till sidans url
             $page->url          = get_page_link($page->ID);
-
-            // ACF-fältet med uppföljning
-            $page->follow_up    = get_field('name_1000027', $page->ID);
 
             // Text + formatering för label
             $page->status_name  = $statusName;
@@ -339,7 +334,7 @@
             // Hämta ACF-objektet för link
             $page_field_object      = get_field('name_1000061', $page->ID);
 
-            $page->all_follow_up = get_region_halland_acf_driftinfo_all_follow_up($page_field_object);
+            $page->follow_up = get_region_halland_acf_driftinfo_all_follow_up($page_field_object);
 
             $page->date_updated = get_region_halland_acf_driftinfo_date_updated($page_field_object);
         }
