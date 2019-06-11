@@ -6,7 +6,7 @@
     /*
     Plugin Name: Region Halland ACF Drift Info
     Description: ACF-fält för drift info
-    Version: 2.0.1
+    Version: 2.0.0
     Author: Roland Hydén
     License: Free to use
     Text Domain: regionhalland
@@ -63,7 +63,7 @@
                 'fields' => array(
                     0 => array( 
                       'key' => 'field_1000017', 
-                      'label' => __('Start-tid', 'regionhalland'), 
+                      'label' => __('Starttid', 'regionhalland'), 
                       'name' => 'name_1000018', 
                       'type' => 'date_time_picker', 
                       'instructions' => __('Fyll i när driftstörningen beräknas starta (obligatoriskt) ', 'regionhalland'), 
@@ -80,7 +80,7 @@
                     ), 
                     1 => array( 
                       'key' => 'field_1000019', 
-                      'label' => __('Slut-tid', 'regionhalland'), 
+                      'label' => __('Sluttid', 'regionhalland'), 
                       'name' => 'name_1000020', 
                       'type' => 'date_time_picker', 
                       'instructions' => __('Fyll i när driftstörningen beräknas vara klar (ej obligatoriskt).', 'regionhalland'), 
@@ -132,11 +132,11 @@
                     ),
                     3 => array(
                         'key' => 'field_1000058',
-                        'label' => __('Nya områden', 'halland'),
+                        'label' => __('Områden', 'halland'),
                         'name' => 'name_1000059',
                         'type' => 'select',
                         'instructions' => __('Välj ett eller flera områden för denna driftstörning', 'regionhalland'),
-                        'required' => 0,
+                        'required' => 1,
                         'conditional_logic' => 0,
                         'wrapper' => array(
                             'width' => '',
@@ -157,7 +157,7 @@
                     ),
                     4 => array(
                         'key' => 'field_1000060',
-                        'label' => __('Ny uppföljning', 'halland'),
+                        'label' => __('Uppföljning', 'halland'),
                         'name' => 'name_1000061',
                         'type' => 'repeater',
                         'instructions' => __('Klicka på "Lägg till rad" för att lägga till en ny uppföljning.', 'halland'),
@@ -369,11 +369,6 @@
                     'key'       => 'name_1000018',
                     'compare'   => '<=',
                     'value'     => $date,
-                ),
-                array(
-                    'key'       => 'name_1000020',
-                    'compare'   => '>=',
-                    'value'     => $date,
                 )
             )
         );
@@ -411,11 +406,6 @@
                     'key'       => 'name_1000018',
                     'compare'   => '<=',
                     'value'     => $date,
-                ),
-                array(
-                    'key'       => 'name_1000020',
-                    'compare'   => '>=',
-                    'value'     => $date,
                 )
             )
         );
@@ -452,11 +442,6 @@
                 array(
                     'key'       => 'name_1000018',
                     'compare'   => '<=',
-                    'value'     => $date,
-                ),
-                array(
-                    'key'       => 'name_1000020',
-                    'compare'   => '>=',
                     'value'     => $date,
                 )
             )
