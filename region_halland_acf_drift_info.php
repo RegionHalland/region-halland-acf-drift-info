@@ -6,7 +6,7 @@
     /*
     Plugin Name: Region Halland ACF Drift Info
     Description: ACF-fält för drift info
-    Version: 2.3.0
+    Version: 2.4.0
     Author: Roland Hydén
     License: Free to use
     Text Domain: regionhalland
@@ -368,7 +368,7 @@
                 ),
                 array(
                     'key'       => 'name_1000018',
-                    'compare'   => '>=',
+                    'compare'   => '<=',
                     'value'     => $date,
                 )
             )
@@ -406,7 +406,7 @@
                 ),
                 array(
                     'key'       => 'name_1000018',
-                    'compare'   => '>=',
+                    'compare'   => '<=',
                     'value'     => $date,
                 )
             )
@@ -444,7 +444,7 @@
                 ),
                 array(
                     'key'       => 'name_1000018',
-                    'compare'   => '>=',
+                    'compare'   => '<=',
                     'value'     => $date,
                 )
             )
@@ -477,7 +477,7 @@
                 ),
                 array(
                     'key'       => 'name_1000018',
-                    'compare'   => '<=',
+                    'compare'   => '>=',
                     'value'     => $date,
                 )
             )
@@ -515,7 +515,7 @@
                 ),
                 array(
                     'key'       => 'name_1000018',
-                    'compare'   => '<=',
+                    'compare'   => '>=',
                     'value'     => $date,
                 )
             )
@@ -553,7 +553,7 @@
                 ),
                 array(
                     'key'       => 'name_1000018',
-                    'compare'   => '<=',
+                    'compare'   => '>=',
                     'value'     => $date,
                 )
             )
