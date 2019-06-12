@@ -6,7 +6,7 @@
     /*
     Plugin Name: Region Halland ACF Drift Info
     Description: ACF-fält för drift info
-    Version: 2.4.0
+    Version: 2.5.0
     Author: Roland Hydén
     License: Free to use
     Text Domain: regionhalland
@@ -62,6 +62,25 @@
                 'title' => 'Info om driftstörning',
                 'fields' => array(
                     0 => array( 
+                      'key' => 'field_1000068',
+                      'label' => 'Kontaktperson (visas inte på sajten)',
+                      'name' => 'name_1000069',
+                      'type' => 'text',
+                      'instructions' => '',
+                      'required' => 0,
+                      'conditional_logic' => 0,
+                      'wrapper' => [
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                      ],
+                      'default_value' => '',
+                      'placeholder' => '',
+                      'prepend' => '',
+                      'append' => '',
+                      'maxlength' => '',
+                    ), 
+                    1 => array( 
                       'key' => 'field_1000017', 
                       'label' => __('Starttid', 'regionhalland'), 
                       'name' => 'name_1000018', 
@@ -78,7 +97,7 @@
                       'return_format' => 'Y-m-d H:i:s', 
                       'first_day' => 1, 
                     ), 
-                    1 => array( 
+                    2 => array( 
                       'key' => 'field_1000019', 
                       'label' => __('Sluttid', 'regionhalland'), 
                       'name' => 'name_1000020', 
@@ -95,7 +114,7 @@
                       'return_format' => 'Y-m-d H:i:s', 
                       'first_day' => 1, 
                     ),
-                    2 => array(
+                    3 => array(
                         'key' => 'field_1000021',
                         'label' => __('Status', 'regionhalland'),
                         'name' => 'name_1000022',
@@ -130,7 +149,7 @@
                         'return_format' => 'value',
                         'placeholder' => '',
                     ),
-                    3 => array(
+                    4 => array(
                         'key' => 'field_1000058',
                         'label' => __('Områden', 'halland'),
                         'name' => 'name_1000059',
@@ -155,7 +174,7 @@
                         'return_format' => 'value',
                         'placeholder' => '',
                     ),
-                    4 => array(
+                    5 => array(
                         'key' => 'field_1000060',
                         'label' => __('Uppföljning', 'halland'),
                         'name' => 'name_1000061',
