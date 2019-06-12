@@ -6,7 +6,7 @@
     /*
     Plugin Name: Region Halland ACF Drift Info
     Description: ACF-fält för drift info
-    Version: 2.2.0
+    Version: 2.3.0
     Author: Roland Hydén
     License: Free to use
     Text Domain: regionhalland
@@ -349,7 +349,8 @@
     // ***********************
     function get_args_drift_info_alla_pagaende() {
 
-        $date = date("Y-m-d H:i:s");
+        //$date = date("Y-m-d H:i:s");
+        $date = date("Y-m-d H:i:s", time()+7200);
 
         // Preparerar array för att hämta ut driftstörningar
         $args = array(
@@ -381,7 +382,8 @@
     // ******************************
     function get_args_drift_info_it_telefoni_pagaende() {
 
-        $date = date("Y-m-d H:i:s");
+        //$date = date("Y-m-d H:i:s");
+        $date = date("Y-m-d H:i:s", time()+7200);
 
         // Preparerar array för att hämta ut driftstörningar
         $args = array(
@@ -418,7 +420,8 @@
     // ****************************
     function get_args_drift_info_fastighet_pagaende() {
 
-        $date = date("Y-m-d H:i:s");
+        //$date = date("Y-m-d H:i:s");
+        $date = date("Y-m-d H:i:s", time()+7200);
 
         // Preparerar array för att hämta ut driftstörningar
         $args = array(
@@ -455,7 +458,8 @@
     // ***********************
     function get_args_drift_info_alla_kommande() {
 
-        $date = date("Y-m-d H:i:s");
+        //$date = date("Y-m-d H:i:s");
+        $date = date("Y-m-d H:i:s", time()+7200);
 
         // Preparerar array för att hämta ut driftstörningar
         $args = array(
@@ -473,7 +477,7 @@
                 ),
                 array(
                     'key'       => 'name_1000018',
-                    'compare'   => '>=',
+                    'compare'   => '<=',
                     'value'     => $date,
                 )
             )
@@ -487,7 +491,8 @@
     // ******************************
     function get_args_drift_info_it_telefoni_kommande() {
 
-        $date = date("Y-m-d H:i:s");
+        //$date = date("Y-m-d H:i:s");
+        $date = date("Y-m-d H:i:s", time()+7200);
 
         // Preparerar array för att hämta ut driftstörningar
         $args = array(
@@ -510,7 +515,7 @@
                 ),
                 array(
                     'key'       => 'name_1000018',
-                    'compare'   => '>=',
+                    'compare'   => '<=',
                     'value'     => $date,
                 )
             )
@@ -524,7 +529,8 @@
     // ****************************
     function get_args_drift_info_fastighet_kommande() {
 
-        $date = date("Y-m-d H:i:s");
+        //$date = date("Y-m-d H:i:s");
+        $date = date("Y-m-d H:i:s", time()+7200);
 
         // Preparerar array för att hämta ut driftstörningar
         $args = array(
@@ -547,7 +553,7 @@
                 ),
                 array(
                     'key'       => 'name_1000018',
-                    'compare'   => '>=',
+                    'compare'   => '<=',
                     'value'     => $date,
                 )
             )
@@ -561,7 +567,8 @@
     // ************************
     function get_args_drift_info_alla_avslutade() {
 
-        $date = date("Y-m-d H:i:s");
+        //$date = date("Y-m-d H:i:s");
+        $date = date("Y-m-d H:i:s", time()+7200);
 
         // Preparerar array för att hämta ut driftstörningar
         $args = array(
@@ -588,7 +595,8 @@
     // *******************************
     function get_args_drift_info_it_telefoni_avslutade() {
 
-        $date = date("Y-m-d H:i:s");
+        //$date = date("Y-m-d H:i:s");
+        $date = date("Y-m-d H:i:s", time()+7200);
 
         // Preparerar array för att hämta ut driftstörningar
         $args = array(
@@ -620,7 +628,8 @@
     // *****************************
     function get_args_drift_info_fastighet_avslutade() {
 
-        $date = date("Y-m-d H:i:s");
+        //$date = date("Y-m-d H:i:s");
+        $date = date("Y-m-d H:i:s", time()+7200);
 
         // Preparerar array för att hämta ut driftstörningar
         $args = array(
@@ -653,7 +662,8 @@
     function get_args_drift_info_alla_avslutade_senaste_2_timmarna() {
 
         // Tid just nu minys två timmar
-        $dateMinusTwoHours = date("Y-m-d H:i:s", time()-7200);
+        //$dateMinusTwoHours = date("Y-m-d H:i:s", time()-7200);
+        $dateMinusTwoHours = date("Y-m-d H:i:s");
 
         // Preparerar array för att hämta ut driftstörningar
         $args = array(
