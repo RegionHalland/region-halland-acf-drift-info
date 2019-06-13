@@ -6,7 +6,7 @@
     /*
     Plugin Name: Region Halland ACF Drift Info
     Description: ACF-fält för drift info
-    Version: 2.5.0
+    Version: 2.5.1
     Author: Roland Hydén
     License: Free to use
     Text Domain: regionhalland
@@ -486,7 +486,7 @@
             'post_type'     => 'driftinfo',
             'meta_key' => 'name_1000018',
             'orderby' => 'meta_value meta_value_num',
-            'order' => 'DESC',
+            'order' => 'ASC',
             'meta_query' => array(
                 'relation' => 'AND',
                 array(
@@ -519,7 +519,7 @@
             'post_type'     => 'driftinfo',
             'meta_key' => 'name_1000018',
             'orderby' => 'meta_value meta_value_num',
-            'order' => 'DESC',
+            'order' => 'ASC',
             'meta_query' => array(
                 'relation' => 'AND',
                 array(
@@ -557,7 +557,7 @@
             'post_type'     => 'driftinfo',
             'meta_key' => 'name_1000018',
             'orderby' => 'meta_value meta_value_num',
-            'order' => 'DESC',
+            'order' => 'ASC',
             'meta_query' => array(
                 'relation' => 'AND',
                 array(
