@@ -6,9 +6,9 @@
     /*
     Plugin Name: Region Halland ACF Drift Info
     Description: ACF-fält för drift info
-    Version: 2.5.1
+    Version: 2.6.0
     Author: Roland Hydén
-    License: Free to use
+    License: GPL-3.0
     Text Domain: regionhalland
     */
 
