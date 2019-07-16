@@ -61,6 +61,9 @@ OBS! Justera så att du hämtar aktuell version.
 
 ## Versionhistorik
 
+### 2.7.1
+- Korrigerat länk till licens-fil
+
 ### 2.7.0
 - Bifogat fil med licensmodell
 
